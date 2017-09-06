@@ -196,6 +196,7 @@ inline void readDirectory(const std::string& directoryName, std::vector<std::str
                 fileNames.push_back(std::string(ent->d_name));
         }
     }
+    closedir(dir);
 #endif
 }
 
