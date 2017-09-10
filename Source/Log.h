@@ -47,6 +47,12 @@ inline const char* shortFileName(const char* fileName)
     return ptr ? ptr + 1 : fileName;
 }
 
+// IMPORTANT NOTICE!!!
+// In the following, we use implicit argument indexing to insert file, line and function name in the log,
+// which disables the flexible numbered argument indexing. That is to say, the following expression is
+// errorneous.
+// LOG_INFO("{0} {1}", "hello, world", 100);
+
 // I have to use ##__VAR_ARGS__ instead of __VAR_ARGS__, see
 // https://gcc.gnu.org/onlinedocs/cpp/Variadic-Macros.html
 

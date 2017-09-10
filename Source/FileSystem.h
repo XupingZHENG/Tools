@@ -262,6 +262,7 @@ inline void readDirectory(const std::string& directoryName, std::vector<std::str
             }
         }
     }
+    closedir(dir);
 #endif
 }
 
