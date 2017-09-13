@@ -21,7 +21,8 @@ void initLogger(bool hasStdOut, int fileSize, int numFiles)
             sinks.push_back(std::make_shared<spdlog::sinks::rotating_file_sink_mt>("logfile", fileSize, numFiles));
             logger = std::make_shared<spdlog::logger>("logger", begin(sinks), end(sinks));
             spdlog::register_logger(logger);
-            spdlog::set_pattern("[%Y-%m-%d %H:%M:%S.%e] [%l] [thread %t] %v");
+            //spdlog::set_pattern("[%Y-%m-%d %H:%M:%S.%e] [%L] [T %t] %v");
+            spdlog::set_pattern("%m%d %H:%M:%S.%e %L %t %v");
         }
     }
 }

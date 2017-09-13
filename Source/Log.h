@@ -77,6 +77,7 @@ inline const char* shortFileName(const char* fileName)
 #define __FUNCTION_NAME__ __FUNCTION__
 #endif
 
+/*
 #define LOG_TRACE(msg, ...) logger->trace("[{} {} {}] " msg, shortFileName(__FILE__), __LINE__, __FUNCTION_NAME__, ##__VA_ARGS__)
 #define LOG_DEBUG(msg, ...) logger->debug("[{} {} {}] " msg, shortFileName(__FILE__), __LINE__, __FUNCTION_NAME__, ##__VA_ARGS__)
 #define LOG_INFO(msg, ...) logger->info("[{} {} {}] " msg, shortFileName(__FILE__), __LINE__, __FUNCTION_NAME__, ##__VA_ARGS__)
@@ -84,6 +85,15 @@ inline const char* shortFileName(const char* fileName)
 #define LOG_ERROR(msg, ...) logger->error("[{} {} {}] " msg, shortFileName(__FILE__), __LINE__, __FUNCTION_NAME__, ##__VA_ARGS__)
 #define LOG_CRITICAL(msg, ...) logger->critical("[{} {} {}] " msg, shortFileName(__FILE__), __LINE__, __FUNCTION_NAME__, ##__VA_ARGS__)
 #define LOG_FATAL(msg, ...) logger->critical("[{} {} {}] " msg, shortFileName(__FILE__), __LINE__, __FUNCTION_NAME__, ##__VA_ARGS__)
+*/
+
+#define LOG_TRACE(msg, ...) logger->trace("{} {} {}: " msg, shortFileName(__FILE__), __LINE__, __FUNCTION_NAME__, ##__VA_ARGS__)
+#define LOG_DEBUG(msg, ...) logger->debug("{} {} {}: " msg, shortFileName(__FILE__), __LINE__, __FUNCTION_NAME__, ##__VA_ARGS__)
+#define LOG_INFO(msg, ...) logger->info("{} {} {}: " msg, shortFileName(__FILE__), __LINE__, __FUNCTION_NAME__, ##__VA_ARGS__)
+#define LOG_WARNING(msg, ...) logger->warn("{} {} {}: " msg, shortFileName(__FILE__), __LINE__, __FUNCTION_NAME__, ##__VA_ARGS__)
+#define LOG_ERROR(msg, ...) logger->error("{} {} {}: " msg, shortFileName(__FILE__), __LINE__, __FUNCTION_NAME__, ##__VA_ARGS__)
+#define LOG_CRITICAL(msg, ...) logger->critical("{} {} {}: " msg, shortFileName(__FILE__), __LINE__, __FUNCTION_NAME__, ##__VA_ARGS__)
+#define LOG_FATAL(msg, ...) logger->critical("{} {} {}: " msg, shortFileName(__FILE__), __LINE__, __FUNCTION_NAME__, ##__VA_ARGS__)
 
 #endif
 

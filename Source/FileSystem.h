@@ -325,6 +325,31 @@ inline std::string getFileNameWithoutPathAndExtension(const std::string& name)
     return name.substr(posBegin, posEnd - posBegin);
 }
 
+inline bool containsLMDB(const std::string& path)
+{
+    bool foundDataMDB = false;
+    bool foundLockMDB = false;
+    std::vector<std::string> fileNames;
+    readDirectory(path, fileNames);
+    int size = (int)fileNames.size();
+    for (int i = 0; i < size; i++)
+    {
+        if (!foundDataMDB)
+        {
+            if (fileNames[i] == "data.mdb")
+                foundDataMDB = true;
+        }
+        if (!foundLockMDB)
+        {
+            if (fileNames[i] == "lock.mdb")
+                foundLockMDB = true;
+        }
+        if (foundDataMDB && foundLockMDB)
+            return true;        
+    }
+    return false;
+}
+
 inline bool copyFile(const std::string& src, const std::string& dst)
 {
     if (!isRegularFile(src))
